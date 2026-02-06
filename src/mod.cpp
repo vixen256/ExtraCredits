@@ -40,15 +40,15 @@ HOOK (void, DisplayWaitScreen, 0x140655B40, u64 a1) {
 	if (auto p_song = comp.find (string ("p_rights_song_lt"))) {
 		auto song = (string *)(a1 + 0xC8);
 
-		SetFontSize(&font, p_song.value()->height * p_song.value()->matrix.x.x, p_song.value()->height * p_song.value()->matrix.y.y);
-		params.unk_0x00       = p_song.value()->width;
-		params.colour[0]      = (u8)(p_song.value()->color[0]);
-		params.colour[1]      = (u8)(p_song.value()->color[1]);
-		params.colour[2]      = (u8)(p_song.value()->color[2]);
-		params.colour[3]      = (u8)(p_song.value()->opacity * 255.0);
-		params.lineOrigin     = Vec2 (p_song.value()->position.x - p_song.value()->anchor.x, p_song.value()->position.y - p_song.value()->anchor.y);
-		params.textCurrent    = Vec2 (p_song.value()->position.x - p_song.value()->anchor.x, p_song.value()->position.y - p_song.value()->anchor.y);
-		diva::DrawTextA(&params, 0x01, song->c_str());
+		SetFontSize (&font, p_song.value ()->height * p_song.value ()->matrix.x.x, p_song.value ()->height * p_song.value ()->matrix.y.y);
+		params.unk_0x00    = p_song.value ()->width;
+		params.colour[0]   = (u8)(p_song.value ()->color[0]);
+		params.colour[1]   = (u8)(p_song.value ()->color[1]);
+		params.colour[2]   = (u8)(p_song.value ()->color[2]);
+		params.colour[3]   = (u8)(p_song.value ()->opacity * 255.0);
+		params.lineOrigin  = Vec2 (p_song.value ()->position.x - p_song.value ()->anchor.x, p_song.value ()->position.y - p_song.value ()->anchor.y);
+		params.textCurrent = Vec2 (p_song.value ()->position.x - p_song.value ()->anchor.x, p_song.value ()->position.y - p_song.value ()->anchor.y);
+		diva::DrawTextA (&params, 0x01, song->c_str ());
 	}
 
 	i32 j = 1;
@@ -63,28 +63,28 @@ HOOK (void, DisplayWaitScreen, 0x140655B40, u64 a1) {
 			if (keys[i].key.has_value ()) key_str = keys[i].key->c_str ();
 			else key_str = ((string *)(a1 + keys[i].fallback_offset))->c_str ();
 
-			SetFontSize(&font, base.value()->height * base.value()->matrix.x.x, base.value()->height * base.value()->matrix.y.y);
-			params.unk_0x00       = base.value()->width;
-			params.colour[0]      = (u8)(base.value()->color[0]);
-			params.colour[1]      = (u8)(base.value()->color[1]);
-			params.colour[2]      = (u8)(base.value()->color[2]);
-			params.colour[3]      = (u8)(base.value()->opacity * 255.0);
-			params.lineOrigin     = Vec2 (base.value()->position.x - base.value()->anchor.x, base.value()->position.y - base.value()->anchor.y);
-			params.textCurrent    = Vec2 (base.value()->position.x - base.value()->anchor.x, base.value()->position.y - base.value()->anchor.y);
-			diva::DrawTextA(&params, 0x01, key_str);
+			SetFontSize (&font, base.value ()->height * base.value ()->matrix.x.x, base.value ()->height * base.value ()->matrix.y.y);
+			params.unk_0x00    = base.value ()->width;
+			params.colour[0]   = (u8)(base.value ()->color[0]);
+			params.colour[1]   = (u8)(base.value ()->color[1]);
+			params.colour[2]   = (u8)(base.value ()->color[2]);
+			params.colour[3]   = (u8)(base.value ()->opacity * 255.0);
+			params.lineOrigin  = Vec2 (base.value ()->position.x - base.value ()->anchor.x, base.value ()->position.y - base.value ()->anchor.y);
+			params.textCurrent = Vec2 (base.value ()->position.x - base.value ()->anchor.x, base.value ()->position.y - base.value ()->anchor.y);
+			diva::DrawTextA (&params, 0x01, key_str);
 		}
 
 		sprintf (buf, "p_rights_name%02d_lt", j);
 		if (auto name = comp.find (string (buf))) {
-			SetFontSize(&font, name.value()->height * name.value()->matrix.x.x, name.value()->height * name.value()->matrix.y.y);
-			params.unk_0x00       = name.value()->width;
-			params.colour[0]      = (u8)(name.value()->color[0]);
-			params.colour[1]      = (u8)(name.value()->color[1]);
-			params.colour[2]      = (u8)(name.value()->color[2]);
-			params.colour[3]      = (u8)(name.value()->opacity * 255.0);
-			params.lineOrigin     = Vec2 (name.value()->position.x - name.value()->anchor.x, name.value()->position.y - name.value()->anchor.y);
-			params.textCurrent    = Vec2 (name.value()->position.x - name.value()->anchor.x, name.value()->position.y - name.value()->anchor.y);
-			diva::DrawTextA(&params, 0x01, str->c_str());
+			SetFontSize (&font, name.value ()->height * name.value ()->matrix.x.x, name.value ()->height * name.value ()->matrix.y.y);
+			params.unk_0x00    = name.value ()->width;
+			params.colour[0]   = (u8)(name.value ()->color[0]);
+			params.colour[1]   = (u8)(name.value ()->color[1]);
+			params.colour[2]   = (u8)(name.value ()->color[2]);
+			params.colour[3]   = (u8)(name.value ()->opacity * 255.0);
+			params.lineOrigin  = Vec2 (name.value ()->position.x - name.value ()->anchor.x, name.value ()->position.y - name.value ()->anchor.y);
+			params.textCurrent = Vec2 (name.value ()->position.x - name.value ()->anchor.x, name.value ()->position.y - name.value ()->anchor.y);
+			diva::DrawTextA (&params, 0x01, str->c_str ());
 		}
 		j++;
 	}
