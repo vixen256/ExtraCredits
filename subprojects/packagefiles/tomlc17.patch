@@ -1,0 +1,14 @@
++++ tomlc17/meson.build
+@@ -0,0 +1,12 @@
++project('tomlc17', 'c', version: '1.0.0')
++
++tomlc17_inc = include_directories('src')
++tomlc17_lib = static_library(
++	'tomlc17',
++	include_directories: tomlc17_inc,
++	sources: ['src/tomlc17.c']
++)
++tomlc17_dep = declare_dependency(
++	link_with: tomlc17_lib,
++	include_directories: tomlc17_inc,
++)
